@@ -1,0 +1,26 @@
+#music-header{
+    height: 31px;
+    background-color: #545652;
+    width: 100%;
+}
+#music-header ul li{
+    float: left;
+    text-align: center;
+    width: 48px;
+}
+#music-header ul a{
+    color: #cccccc;
+    line-height: 28px;
+}
+#music-header ul a:hover{
+    color: #fff;
+}
+#music-header>a{
+    color: #ccc;
+    margin-right: 16px;
+    float: right;
+    line-height: 28px;
+}
+#music-header>a:hover{
+    color: #fff;
+}
