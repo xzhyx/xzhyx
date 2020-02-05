@@ -7,95 +7,127 @@
     <title>Document</title>
 </head>
 <style>
-    *{
-        padding: 0;
-        margin: 0;
-    }
-    ul,li{
-        list-style: none;
-    }
-    a{
-        color: #666;
-        text-decoration: none;
-    }
     #wraper{
-        width: 376px;
+        width: 131px;
+        height: 132px;
+        overflow: hidden;
+        position: relative;
         margin: 20px auto;
-        background-color: rgba(0, 0, 0, .2);
     }
-    h1{
-        background-color: rgba(0, 0, 0, .4);
-        font-size: 12px;
-        font-weight: bold;
-        height: 23px;
-        line-height: 23px;
-        padding-left: 30px;
+    #pic{
+        width: 876px;
+        height: 132px;
+        position: absolute;
+        left: 0;
+        transition: all 1s ease;
     }
-    .l{
+    #wraper div img{
         float: left;
     }
-    .pic{
-        width: 99px;
-        border: 1px solid red;
-        padding: 5px;
+    ul{
+        margin-left: 30px;
+        list-style: none;
     }
-    img{
-        width: 100%;
+    ul li{
+        height: 20px;
+        width: 20px;
+        border: 1px solid rgba(255, 236, 123, 1);
+        border-radius: 20px;
+        float: left;
+        margin-left: 5px;
     }
-    .clear:after{content:"";display: block;clear: both;}
-    .content{
-        width: 240px;
-        /* background-color: rgba(0,25,55,.4); */
-        margin-left: 15px;
-    }
-    #wraper ul li{
-        margin-bottom: 23px;
-    }
-    #wraper ul{
-        margin: 30px 0 0 10px;
-    }
-    #content h3,p{
-        line-height: 24px;
+    #l:hover{
+        opacity: .8;
     }
 </style>
 <body>
     <div id="wraper">
-        <h1>你是猪满的打分</h1>
-        <ul>
-            <li class="clear">
-                <div class="pic l">
-                    <a href="#">
-                        <img src="12/images/music/1.png" alt="">
-                    </a>
-                </div>
-                <div class="content l">
-                    <h3>fasfasfasf</h3>
-                    <p>ddddddddddddddd为什么全英就不行乐 ddddddddddd<a href="#">[详细]</a></p>
-                </div>
-            </li>
-            <li class="clear">
-                <div class="pic l">
-                    <a href="#">
-                        <img src="12/images/music/1.png" alt="">
-                    </a>
-                </div>
-                <div class="content l">
-                    <h3>fasfasfasf</h3>
-                    <p>ddddddddddddddd方法dddddddddddddddddd<a href="#">[详细]</a></p>
-                </div>
-            </li>
-            <li class="clear">
-                <div class="pic l">
-                    <a href="#">
-                        <img src="12/images/music/1.png" alt="">
-                    </a>
-                </div>
-                <div class="content l">
-                    <h3>fasfasfasf</h3>
-                    <p>ddddddddddddddddd发发发dddddddddddddddd<a href="#">[详细]</a></p>
-                </div>
-            </li>
-        </ul>
+        <div id="pic">
+            <img src="12/images/music/1.png" alt="">
+            <img src="12/images/music/2.png" alt="">
+            <img src="12/images/music/3.png" alt="">
+            <img src="12/images/music/4.png" alt="">
+            <img src="12/images/music/5.png" alt="">
+            <img src="12/images/music/1.png" alt="">
+        </div>
     </div>
+    <ul id="u">
+        <li index="1">1</li>
+        <li index="2">2</li>
+        <li index="3">3</li>
+        <li index="4">4</li>
+        <li index="5">5</li>
+    </ul>
+    <div id="l" style="width: 20px;height: 60px;background-color:rgba(255, 236, 123, 1);cursor: pointer;">←</div>
+        <div id="r" style="float: right;">→</div>
 </body>
 </html>
+<script>
+        var list =document.getElementsByTagName("li");
+        var l = document.getElementById("l");
+        var r = document.getElementById("r");
+        var pic = document.getElementById("pic");
+        var img = document.getElementsByTagName("img")[0];
+        var count =0;
+        var t;
+        var u = document.getElementById("u");
+    for(var i=0;i<list.length;i++){
+        list[i].addEventListener("click",q);
+    }
+    //原点
+    function q(e){
+        clearInterval(t);
+        count = this.getAttribute("index");
+        move();
+    }
+        l.addEventListener("click",auto);
+        r.addEventListener("click",auto);
+    function auto(e){
+        clearInterval(t);
+       if(this==r){
+        count--;
+        if(count<0){
+            count=4;
+        }
+        move();
+       }
+       else if(this==l){
+        count++;
+        if(count>5){
+            count=1;
+        }
+        move();
+       }
+    }      
+    //图片的移动
+    function move(){
+        pic.style.left = -131*count + "px";
+    }
+    a();
+    function a(){
+        t= setInterval(function(){
+        count--;
+        if(count<0){
+            count=4;
+        }
+        move();
+       },2000)
+    }
+    //移进
+    pic.onmouseover = function(){
+        clearInterval(t);
+    }
+    //出
+    pic.onmouseout = function(){
+        a();
+    }
+    l.onmouseout = function(){
+        a();
+    }
+    r.onmouseout = function(){
+        a();
+    }
+    u.onmouseout = function(){
+        a();
+    } 
+</script>

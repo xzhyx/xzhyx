@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding: 0;
+    }
+    ul{
+        list-style: none;
+    }
+    #menu{
+        width: 100px;
+        height: 30px;
+        margin: 20px auto;
+        border: 1px solid red;
+        position: relative;
+        text-align: center;
+        line-height: 30px;
+    }
+    #menu ul{
+        position: absolute;
+        top: 30px;
+        left: -1px;
+        width: 100px;
+        border: 1px solid red;
+        display: none;
+    }
+    #menu:hover ul{
+        display:block;
+    }
+    #menu ul li{
+        position: relative;
+    }
+    #menu ul li:hover{
+        background-color: #666666;
+    }
+    #menu ul li:before{content: "";width: 2px;height: 2px;background-color: red;display: block;position: absolute;top:50%;left:2px}
+</style>
+<body>
+    <div id="menu">
+        思思思思
+        <ul>
+            <li>一二三四</li>
+            <li>一二三四</li>
+            <li>一二三四</li>
+        </ul>
+    </div>
+</body>
+</html>
